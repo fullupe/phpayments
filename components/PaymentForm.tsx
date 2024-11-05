@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { useToast } from "@/hooks/use-toast";
-const apiUrl:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
+const apiUrl:string = process.env.NEXT_PUBLIC_VERCEL_URL as string
 
 
 interface Tagents{
