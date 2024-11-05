@@ -1,6 +1,6 @@
 
 
-import { NextResponse } from "next/server"
+//import { NextResponse } from "next/server"
 
 const URL:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
 
