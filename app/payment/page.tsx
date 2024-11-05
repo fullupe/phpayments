@@ -1,7 +1,7 @@
 "use client";
 
-import { PaymentForm } from "@/components/payment-form";
-import { PaymentTable } from "@/components/payment-table";
+import { PaymentForm } from "@/components/PaymentForm";
+import { PaymentTable } from "@/components/PaymentTable";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
