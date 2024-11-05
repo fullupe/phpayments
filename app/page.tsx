@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PinInput } from "@/components/pin-input";
+import { PinInput } from "@/components/PinInput";
 
 export default function Home() {
   const router = useRouter();
