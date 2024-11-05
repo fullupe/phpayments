@@ -5,6 +5,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
+  images: {
+    domains: ['your-api-domain'], // Replace with your actual domain
+  },
 };
 
 module.exports = nextConfig;
