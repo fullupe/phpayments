@@ -13,7 +13,7 @@ export async function GET(req: Request, res: Response){
         return new Response(JSON.stringify(Payments))
 
     }catch(error){
-        //console.error("Error fetching data:", error);
+       
         return new Response(JSON.stringify({ error: 'Failed to fetch data' }), { status: 500 });
     }
 

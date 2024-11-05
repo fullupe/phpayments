@@ -33,7 +33,7 @@ export function PaymentTable({refreshPayments,setRefreshPayments}:Props) {
   useEffect(()=>{
     const getPayments= async ()=>{
       try{
-          const Payments:Tpayment| any =  await fetch("api/fetchPayments").then((res)=>res?.json().then(data=>data.data))
+          const Payments:Tpayment| any =  await fetch("/api/fetchPayments").then((res)=>res?.json().then(data=>data.data))
 
           setPayments(Payments);
           

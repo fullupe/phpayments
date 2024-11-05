@@ -139,7 +139,7 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
   useEffect(()=>{
     const getPayments= async ()=>{
       try{
-          const AgentData:Tagents| any =  await fetch("api/fetchAgents").then((res)=>res?.json().then(data=>data.data))
+          const AgentData:Tagents| any =  await fetch("/api/fetchAgents").then((res)=>res?.json().then(data=>data.data))
 
           setAgentsData(AgentData);
           
