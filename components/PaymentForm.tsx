@@ -27,7 +27,8 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
     amount: "",
   });
 
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<any>(null);
 
   const [agentsData,setAgentsData]=useState<Tagents[]>([])
 
@@ -136,24 +137,50 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
 
 
 
-  useEffect(()=>{
-    const getPayments= async ()=>{
-      try{
-          const AgentData:Tagents| any =  await fetch("/api/fetchAgents").then((res)=>res?.json().then(data=>data.data))
+  useEffect(() => {
+    const getPayments = async () => {
+      setIsLoading(true);
+      setError(null); // Reset error on each fetch
 
-          setAgentsData(AgentData);
-          
-      }catch(error){
-          console.log(error)
+      try {
+        const response = await fetch('/api/fetchAgents');
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setAgentsData(data.data || []); // Handle missing "data" property
+      } catch (error) {
+        console.error('Error fetching agents:', error);
+        setError(error); // Store error for display
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-  }
+    getPayments();
+  }, []);
+
+
+  // useEffect(()=>{
+  //   const getPayments= async ()=>{
+  //     try{
+  //         const AgentData:Tagents| any =  await fetch("/api/fetchAgents").then((res)=>res?.json().then(data=>data.data))
+
+  //         setAgentsData(AgentData);
+          
+  //     }catch(error){
+  //         console.log(error)
+  //     }
+
+  // }
 
   
 
-  getPayments()
+  // getPayments()
 
-  },[])
+  // },[])
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
