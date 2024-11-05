@@ -36,7 +36,7 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
   
       const agentsDatabase:any = {};
   
-      agentsData.forEach(agent => {
+      agentsData?.forEach(agent => {
         // Assuming you want to format AgentId as a 4-digit string
         const formattedAgentId = `${agent.AgentId.toString().padStart(3, '0')}`;
         agentsDatabase[formattedAgentId] = agent.AgentName;

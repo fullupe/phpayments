@@ -14,8 +14,10 @@ export async function GET(req: Request, res: Response){
 
     }catch(error){
         console.error("Error fetching data:", error);
+        return new Response(JSON.stringify({ error: 'Failed to fetch data' }), { status: 500 });
     }
 
 
 }
 export const revalidate =0;
+
