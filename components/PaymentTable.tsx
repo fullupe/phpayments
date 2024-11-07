@@ -65,22 +65,40 @@ export function PaymentTable({refreshPayments,setRefreshPayments}:Props) {
 
 
 
-  useEffect(()=>{
-    const getPayments= async ()=>{
-      try{
-          const Payments:Tpayment| any =  await fetch("/api/fetchpayments").then((res)=>res?.json().then(data=>data.data))
+  // useEffect(()=>{
+  //   const getPayments= async ()=>{
+  //     try{
+  //         const Payments:Tpayment| any =  await fetch("/api/fetchpayments").then((res)=>res?.json().then(data=>data.data))
 
-          setPayments(Payments);
+  //         setPayments(Payments);
           
-      }catch(error){
-          console.log(error)
+  //     }catch(error){
+  //         console.log(error)
+  //     }
+
+  // }
+
+  // getPayments()
+
+  // },[refreshPayments])
+
+  useEffect(() => {
+    const getPayments = async () => {
+      try {
+        const response = await fetch("/api/fetchpayments");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPayments(data.data);
+        console.log(data.data);
+      } catch (error) {
+        console.error("Failed to fetch payments:", error);
       }
-
-  }
-
-  getPayments()
-
-  },[refreshPayments])
+    };
+  
+    getPayments();
+  }, []);
 
 
   return (

@@ -162,27 +162,23 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
   //   getPayments();
   // }, []);
 
-
-  useEffect(()=>{
-    const getPayments= async ()=>{
-      try{
-          const AgentData:Tagents| any =  await fetch("/api/fetchagents").then((res)=>res?.json().then(data=>data.data))
-
-          setAgentsData(AgentData);
-
-          console.log(AgentData)
-
-          
-      }catch(error){
-          console.log(error)
+  useEffect(() => {
+    const getAgents = async () => {
+      try {
+        const response = await fetch("/api/fetchagents");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setAgentsData(data.data);
+        console.log(data.data);
+      } catch (error) {
+        console.error("Failed to fetch agents:", error);
       }
-
-  }
-
-
-  getPayments()
-
-  },[])
+    };
+  
+    getAgents();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto">
