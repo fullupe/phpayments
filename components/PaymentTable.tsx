@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useEffect, useState } from "react";
-const apiUrl:string = process.env.NEXT_PUBLIC_VERCEL_URL as string
+const apiUrl:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
 
 // Mock data for the table
 

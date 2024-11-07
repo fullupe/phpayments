@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { useToast } from "@/hooks/use-toast";
-const apiUrl:string = process.env.NEXT_PUBLIC_VERCEL_URL as string
+const apiUrl:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
 
 
 interface Tagents{
@@ -143,7 +143,7 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
       setError(null); // Reset error on each fetch
 
       try {
-        const response = await fetch('/api/fetchAgents');
+        const response = await fetch('/api/fetchagents');
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

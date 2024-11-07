@@ -2,12 +2,12 @@
 
 //import { NextResponse } from "next/server"
 
-const URL:string = process.env.NEXT_PUBLIC_VERCEL_URL as string
+const URL:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
 
 
 export async function GET(req: Request, res: Response) {
   try {
-    const response = await fetch(`${URL}getagents`, { cache: 'no-store' });
+    const response = await fetch(`${URL}getAgents`, { cache: 'no-store' });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
