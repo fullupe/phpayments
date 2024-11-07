@@ -29,7 +29,7 @@ const URL:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
 
 export async function GET(req: Request) {
   try {
-    const response = await fetch(`${URL}getAgents`, { cache: 'no-store' });
+    const response = await fetch(`${URL}?action=getAgents`, { cache: 'no-store' });
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
