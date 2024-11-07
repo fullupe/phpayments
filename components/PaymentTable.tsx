@@ -34,53 +34,53 @@ export function PaymentTable({refreshPayments,setRefreshPayments}:Props) {
 
 
 
-  useEffect(() => {
-    const getPayments = async () => {
-      setIsLoading(true);
-      setError(null); // Reset error on each fetch
+  // useEffect(() => {
+  //   const getPayments = async () => {
+  //     setIsLoading(true);
+  //     setError(null); // Reset error on each fetch
 
-      try {
-        const response = await fetch('api/fetchpayments');
+  //     try {
+  //       const response = await fetch('/api/fetchpayments');
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
 
-        const data = await response.json();
-        setPayments(data.data || []); // Handle missing "data" property
-      } catch (error) {
-        console.error('Error fetching agents:', error);
-        setError(error); // Store error for display
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getPayments();
-  }, [!refreshPayments]);
-
-
-
-
-
-
-
-  // useEffect(()=>{
-  //   const getPayments= async ()=>{
-  //     try{
-  //         const Payments:Tpayment| any =  await fetch("/api/fetchPayments").then((res)=>res?.json().then(data=>data.data))
-
-  //         setPayments(Payments);
-          
-  //     }catch(error){
-  //         console.log(error)
+  //       const data = await response.json();
+  //       setPayments(data.data || []); // Handle missing "data" property
+  //     } catch (error) {
+  //       console.error('Error fetching agents:', error);
+  //       setError(error); // Store error for display
+  //     } finally {
+  //       setIsLoading(false);
   //     }
+  //   };
 
-  // }
+  //   getPayments();
+  // }, [!refreshPayments]);
 
-  // getPayments()
 
-  // },[refreshPayments])
+
+
+
+
+
+  useEffect(()=>{
+    const getPayments= async ()=>{
+      try{
+          const Payments:Tpayment| any =  await fetch("/api/fetchpayments").then((res)=>res?.json().then(data=>data.data))
+
+          setPayments(Payments);
+          
+      }catch(error){
+          console.log(error)
+      }
+
+  }
+
+  getPayments()
+
+  },[refreshPayments])
 
 
   return (
