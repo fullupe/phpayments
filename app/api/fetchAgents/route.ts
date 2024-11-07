@@ -2,7 +2,7 @@
 
 //import { NextResponse } from "next/server"
 
-const URL:string = process.env.NEXT_PUBLIC_BASE_URL_DATA as string
+const URL:string = process.env.GOOGLE_SCRIPT_URL as string
 
 
 
