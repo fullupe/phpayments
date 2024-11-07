@@ -169,6 +169,9 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
           const AgentData:Tagents| any =  await fetch("/api/fetchagents").then((res)=>res?.json().then(data=>data.data))
 
           setAgentsData(AgentData);
+
+          console.log(AgentData)
+
           
       }catch(error){
           console.log(error)
@@ -176,7 +179,6 @@ export function PaymentForm({refreshPayments,setRefreshPayments}:Props) {
 
   }
 
-  
 
   getPayments()
 
