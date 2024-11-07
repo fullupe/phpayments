@@ -40,7 +40,7 @@ export function PaymentTable({refreshPayments,setRefreshPayments}:Props) {
       setError(null); // Reset error on each fetch
 
       try {
-        const response = await fetch('/api/fetchpayments');
+        const response = await fetch('api/fetchpayments');
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
